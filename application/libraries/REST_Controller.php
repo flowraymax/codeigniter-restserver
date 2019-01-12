@@ -422,9 +422,6 @@ abstract class REST_Controller extends CI_Controller {
 		$this->_start_rtime = microtime(TRUE);
 	}
 	    
-	// Set The config
-	$this->config_set();
-        
 	// Load the rest.php configuration file
         $this->get_local_config($config);
 
@@ -628,6 +625,9 @@ abstract class REST_Controller extends CI_Controller {
         }
 
         $this->load->config($config_file, FALSE, TRUE);
+	    
+	// Set Post config 
+	$this->config_set();
     }
 
     /**
