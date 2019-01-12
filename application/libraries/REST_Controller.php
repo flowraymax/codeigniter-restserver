@@ -384,6 +384,16 @@ abstract class REST_Controller extends CI_Controller {
     protected function early_checks()
     {
     }
+	    /**
+     * Extend this function to alter library config
+     *
+     * @access protected
+     * @return void
+     */
+    protected function config_set()
+    {
+	    
+    }
 
     /**
      * Constructor for the REST API
@@ -411,8 +421,11 @@ abstract class REST_Controller extends CI_Controller {
                 // Start the timer for how long the request takes
 		$this->_start_rtime = microtime(TRUE);
 	}
-
-        // Load the rest.php configuration file
+	    
+	// Set The config
+	$this->config_set();
+        
+	// Load the rest.php configuration file
         $this->get_local_config($config);
 
         // At present the library is bundled with REST_Controller 2.5+, but will eventually be part of CodeIgniter (no citation)
